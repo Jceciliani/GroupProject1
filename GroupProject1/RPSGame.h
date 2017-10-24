@@ -22,7 +22,12 @@ class RPSGame
 
 #endif // !RPSGAME_H
 ************************************************/
-
+/******************************************************************************
+** Authors: Devon Aleshire, Joshua Ceciliani, Todd Irlbeck, Nikita Mattingly,
+** and Edward Pietryk
+** Date: 10/22/2017
+** Description: RPSGame.hpp is the header file.
+******************************************************************************/
 #ifndef RPSGame_HPP
 #define RPSGame_HPP
 #include <cstdio> // Reference: https://www.tutorialspoint.com/c_standard_library/stdio_h.htm
