@@ -28,23 +28,24 @@ RPSGame::~RPSGame()
 #include <cstdlib>
 #include <ctime>
 #include "RPSGame.h"
-#include "rock.h"
-#include "paper.h"
-#include "scissors.h"
+#include "Rock.h"
+#include "Paper.h"
+#include "Scissors.h"
+#include <iomanip>
 
 using std::cin;
 using std::cout;
 using std::endl;
-
+using std::setw;
 //Default Constructor
 RPSGame::RPSGame() 
 {
 	human_wins = 0;
 	computer_wins = 0;
 	ties = 0;
-	customRockStrength = 1;
-	customScissorsStrength = 1;
-	customPaperStrength = 1;
+	int rockStrength = 1;
+	int scissorsStrength = 1;
+	int paperStrength = 1;
 }
 
 /*********************************************************************
@@ -136,7 +137,7 @@ Tool* RPSGame::getComputer()
 
 /*********************************************************************
 ** Function: checkFight()
-** Description: Compares the human and computer to see who wins
+** Description: Compares the human and AI to see who wins
 ** Parameters: None
 ** Pre-Conditions: None
 ** Post-Conditions: Winner is chosen
@@ -173,18 +174,20 @@ void RPSGame::checkFight()
 int RPSGame::playRPS() 
 {
 	int strengthSelection;
-	cout <<"__________________________________________________________________________" << endl;
-	cout <<" ___         _     ___                      ___     _                   _ " << endl;
-	cout <<"| _ \___  __| |__ | _ \__ _ _ __  ___ _ _  / __| __(_)______ ___ _ _ __| |" << endl;
-	cout <<"|   / _ \/ _| / / |  _/ _` | '_ \/ -_) '_| \__ \/ _| (_-<_-</ _ \ '_(_-<_|" << endl;
-	cout <<"|_|_\___/\__|_\_\ |_| \__,_| .__/\___|_|   |___/\__|_/__/__/\___/_| /__(_)" << endl;
-	cout <<"                           |_|                                            " << endl;
-	cout <<"__________________________________________________________________________" << endl << endl;
-	cout <<"~*~*~*~*~*~*~*~*~*~*WELCOME TO ROCK, PAPER, SCISSORS!~*~*~*~*~*~*~*~*~*~*~" << endl;
-	cout <<"-----------------------------DIRECTIONS-----------------------------------" << endl;
-	cout <<"You will be playing rock, paper, and scissors against the computer! Before\n";
-	cout << "we begin, would you like to select the different strengths for the tools?\n";
-	cout << "Please enter (1) Yes OR (2) No :" << endl;
+	//Using raw string literal to make ascii art appear
+	//Reference: https://stackoverflow.com/questions/37765925/ascii-art-in-c
+	cout << R"(
+	 ___         _     ___                      ___     _                   _  
+	| _ \___  __| |__ | _ \__ _ _ __  ___ _ _  / __| __(_)______ ___ _ _ __| | 
+	|   / _ \/ _| / / |  _/ _` | '_ \/ -_) '_| \__ \/ _| (_-<_-</ _ \ '_(_-<_| 
+	|_|_\___/\__|_\_\ |_| \__,_| .__/\___|_|   |___/\__|_/__/__/\___/_| /__(_) 
+	                           |_|                                             
+	 )" << endl << endl;
+	cout<<"~*~*~*~*~*~*~*~*~*~*WELCOME TO ROCK, PAPER, SCISSORS!~*~*~*~*~*~*~*~*~*~*~" << endl;
+	cout<<"-----------------------------DIRECTIONS-----------------------------------" << endl;
+	cout<<"You will be playing rock, paper, and scissors against the computer! Before\n";
+	cout<< "we begin, would you like to select the different strengths for the tools?\n";
+	cout<< "Please enter (1) Yes OR (2) No :" << endl;
 	cin >> strengthSelection;
 	do {
 		if (strengthSelection == 1) 
@@ -206,7 +209,7 @@ int RPSGame::playRPS()
 	while (1);
 }
 
-//Assignment Overload, reference: http://www.learncpp.com/cpp-tutorial/9-14-overloading-the-assignment-operator/
+//Assignment Overload
 void RPSGame::operator=(const RPSGame &other) 
 {
 	human_wins = other.human_wins;
