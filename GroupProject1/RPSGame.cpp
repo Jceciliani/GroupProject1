@@ -136,7 +136,7 @@ Tool* RPSGame::getComputer()
 
 /*********************************************************************
 ** Function: checkFight()
-** Description: Compares the human and AI to see who wins
+** Description: Compares the human and computer to see who wins
 ** Parameters: None
 ** Pre-Conditions: None
 ** Post-Conditions: Winner is chosen
