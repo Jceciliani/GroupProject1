@@ -206,7 +206,7 @@ int RPSGame::playRPS()
 	while (1);
 }
 
-//Assignment Overload
+//Assignment Overload, reference: http://www.learncpp.com/cpp-tutorial/9-14-overloading-the-assignment-operator/
 void RPSGame::operator=(const RPSGame &other) 
 {
 	human_wins = other.human_wins;
