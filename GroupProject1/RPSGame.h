@@ -28,10 +28,10 @@ class RPSGame
 ** Date: 10/22/2017
 ** Description: RPSGame.hpp is the header file.
 ******************************************************************************/
-#ifndef RPSGame_HPP
-#define RPSGame_HPP
-#include <cstdio> // Reference: https://www.tutorialspoint.com/c_standard_library/stdio_h.htm
-#include "tool.h"
+#ifndef RPSGame_H
+#define RPSGame_H
+#include <cstdio>
+#include "Tool.h"
 
 class RPSGame 
 {
@@ -43,9 +43,9 @@ protected:
 	int human_wins;
 	int computer_wins;
 	int ties;
-	int customRockStrength();
-	int customPaperStrength();
-	int customScissorsStrength();
+	int customRockStrength;
+	int customPaperStrength;
+	int customScissorsStrength;
 	void checkFight();
 	void chooseStrength();
 
@@ -60,5 +60,3 @@ public:
 
 };
 #endif
-
-
