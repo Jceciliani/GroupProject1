@@ -13,7 +13,7 @@ Rock::Rock(int strength)
 	
 }
 
-bool Rock::fight(Tool)
+bool Rock::fight(Tool*)
 {
 	return false;
 }

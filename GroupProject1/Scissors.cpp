@@ -12,7 +12,7 @@ Scissors::Scissors(int strength)
 	setStrength(strength);
 }
 
-bool Scissors::fight(Tool)
+bool Scissors::fight(Tool*)
 {
 	return false;
 }

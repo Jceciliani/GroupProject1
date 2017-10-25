@@ -3,7 +3,6 @@
 #define ROCK_H
 #include "Tool.h"
 
-const int DEFAULT = 1;
 const char ROCK = 'r';
 
 class Rock : public Tool
@@ -14,7 +13,7 @@ class Rock : public Tool
 		Rock(int);
 
 		//FUNCTIONS
-		bool fight(Tool);
+		bool fight(Tool*);
 
 		//DESCTRUCTOR
 		~Rock();

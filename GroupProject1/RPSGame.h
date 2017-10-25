@@ -1,27 +1,3 @@
-/**************************************************
-#ifndef RPSGAME_H
-#define RPSGAME_H
-#include "Tool.h"
-
-const int TOOL_SIZE = 2;
-
-class RPSGame
-{
-	private:
-		Tool* human;
-		Tool* computer;
-
-		int human_wins;
-		int computer_wins;
-		int ties;
-	public:
-		RPSGame();
-		~RPSGame();
-};
-
-
-#endif // !RPSGAME_H
-************************************************/
 /******************************************************************************
 ** Authors: Devon Aleshire, Joshua Ceciliani, Todd Irlbeck, Nikita Mattingly,
 ** and Edward Pietryk
@@ -32,10 +8,18 @@ class RPSGame
 #define RPSGame_H
 #include <cstdio>
 #include "Tool.h"
+#include "Menu.hpp"
+#include "HelperFunctions.hpp"
+
+//enum Tools {PAPER = 1, ROCK, SCISSORS};
+const int MAX_STRENGTH = 10;
+const int MIN_STRENGTH = 1;
+const char EXIT = 'e';
 
 class RPSGame 
 {
 protected:
+	Menu menu;
 	Tool *human;
 	Tool *computer;
 	Tool* getTool();

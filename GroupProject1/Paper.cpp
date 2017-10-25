@@ -12,7 +12,7 @@ Paper::Paper(int strength)
 	setStrength(strength);
 }
 
-bool Paper::fight(Tool)
+bool Paper::fight(Tool*)
 {
 	return false;
 }

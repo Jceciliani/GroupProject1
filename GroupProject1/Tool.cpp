@@ -96,3 +96,8 @@ char Tool::getType() const
 {
     return type;
 }
+
+bool Tool::fight(Tool *)
+{
+	return false;
+}

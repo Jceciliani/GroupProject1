@@ -2,7 +2,6 @@
 #define SCISSORS_H
 #include "Tool.h"
 
-const int DEFAULT = 1;
 const char SCISSORS = 's';
 
 class Scissors : public Tool
@@ -13,7 +12,7 @@ class Scissors : public Tool
 		Scissors(int);
 
 		//FUNCTIONS
-		bool fight(Tool);
+		bool fight(Tool*);
 
 		//DESTRUCTOR
 		~Scissors();

@@ -10,6 +10,8 @@
 #ifndef TOOL_H
 #define TOOL_H
 
+const int DEFAULT = 1;
+
 class Tool
 {
         protected:
@@ -19,10 +21,11 @@ class Tool
                 Tool();
                 Tool(int, char);
                 virtual ~Tool();
-                virtual void setStrength(const int);
-                virtual int getStrength() const;
-                virtual void setType(const char);
-                virtual char getType() const;
+                void setStrength(const int);
+                int getStrength() const;
+                void setType(const char);
+                char getType() const;
+				virtual bool fight(Tool*);
 };
 
 #endif // !TOOL_H

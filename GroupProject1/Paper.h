@@ -2,7 +2,7 @@
 #define PAPER_H
 #include "Tool.h"
 
-const int DEFAULT = 1;
+
 const char PAPER = 'p';
 
 class Paper : public Tool
@@ -13,7 +13,7 @@ class Paper : public Tool
 		Paper(int);
 
 		//FUNCTIONS
-		bool fight(Tool);
+		bool fight(Tool*);
 
 		//DESTRUCTORS
 		~Paper();
