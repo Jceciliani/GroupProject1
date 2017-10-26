@@ -2,7 +2,7 @@
 #define SCISSORS_H
 #include "Tool.h"
 
-const char SCISSORS = 's';
+
 
 class Scissors : public Tool
 {
@@ -10,9 +10,6 @@ class Scissors : public Tool
 		//CONSTRUCTOR
 		Scissors();
 		Scissors(int);
-
-		//FUNCTIONS
-		bool fight(Tool*);
 
 		//DESTRUCTOR
 		~Scissors();

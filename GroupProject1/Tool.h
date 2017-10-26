@@ -9,14 +9,19 @@
 
 #ifndef TOOL_H
 #define TOOL_H
+#include <iostream>
 
 const int DEFAULT = 1;
+const char ROCK = 'r';
+const char PAPER = 'p';
+const char SCISSORS = 's';
 
 class Tool
 {
         protected:
                 int strength;
                 char type;
+
         public:
                 Tool();
                 Tool(int, char);
@@ -24,8 +29,10 @@ class Tool
                 void setStrength(const int);
                 int getStrength() const;
                 void setType(const char);
-                char getType() const;
-				virtual bool fight(Tool*);
+				char getType() const;
+				static int compare(int a, int b);
+				virtual int fight(Tool*);
+				void DisplayBattleStrengths(int a, int b);
 };
 
 #endif // !TOOL_H

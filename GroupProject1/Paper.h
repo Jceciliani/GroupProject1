@@ -3,7 +3,7 @@
 #include "Tool.h"
 
 
-const char PAPER = 'p';
+
 
 class Paper : public Tool
 {
@@ -13,7 +13,7 @@ class Paper : public Tool
 		Paper(int);
 
 		//FUNCTIONS
-		bool fight(Tool*);
+		int fight(Tool*);
 
 		//DESTRUCTORS
 		~Paper();

@@ -97,7 +97,28 @@ char Tool::getType() const
     return type;
 }
 
-bool Tool::fight(Tool *)
+int Tool::compare(int a, int b)
 {
-	return false;
+	int result = 0;
+	if (a > b) 
+	{
+		result = 1;
+	}
+	else if (a < b) 
+	{
+		result = -1;
+	}
+
+	return result;
+}
+
+int Tool::fight(Tool * tool)
+{
+	Tool::DisplayBattleStrengths(this->getStrength(), tool->getStrength());
+	return Tool::compare(this->getStrength(), tool->getStrength());;
+}
+
+void Tool::DisplayBattleStrengths(int a, int b)
+{ 
+	std::cout << "Human Strength [ " << a << " ]" << "  < VS >  " << "[ " << b << " ] " << "Computer Strength" << std::endl;
 }

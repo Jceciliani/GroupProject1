@@ -26,9 +26,10 @@ RPSGame::RPSGame()
 	human_wins = 0;
 	computer_wins = 0;
 	ties = 0;
-	int rockStrength = 1;
-	int scissorsStrength = 1;
-	int paperStrength = 1;
+
+	//Seeding rand()
+	srand(std::time(0));
+
 	//Using raw string literal to make ascii art appear
 	//Reference: https://stackoverflow.com/questions/37765925/ascii-art-in-c
 	menu.setTitle(
@@ -54,9 +55,8 @@ RPSGame::RPSGame()
 *********************************************************************/
 void RPSGame::chooseStrength() 
 {
-	//TODO SET STRENGTHS???
 	customRockStrength = 
-		HelperFunctions::getValidInt("Enter a integer to set the strength for ROCK", MIN_STRENGTH, MAX_STRENGTH);
+		HelperFunctions::getValidInt("Enter an integer to set the strength for ROCK", MIN_STRENGTH, MAX_STRENGTH);
 	customPaperStrength = 
 		HelperFunctions::getValidInt("Enter an integer to set the strength for PAPER", MIN_STRENGTH, MAX_STRENGTH);
 	customScissorsStrength = 
@@ -73,29 +73,29 @@ void RPSGame::chooseStrength()
 Tool* RPSGame::getTool() 
 {
 	char selection;
-	do 
+
+	selection = HelperFunctions::getValidChar(
+		"Select your tool: (r) Rock | (p) Paper | (s) Scissors | (e) EXIT\n\nSelection",
+			VALID_CHARS
+	);
+
+	if (selection == ROCK) 
 	{
-		selection = HelperFunctions::getValidChar("Select your tool: (r) Rock | (p) Paper | (s) Scissors | (e) EXIT\n\nSelection",
-																			std::vector<char> {'r', 'p', 's', 'e' });
-		if (selection == ROCK) 
-		{
-			return new Rock(customRockStrength);
-		}
-		else if (selection == PAPER) 
-		{
-			return new Paper(customPaperStrength);
-		}
-		else if (selection == SCISSORS) 
-		{
-			return new Scissors(customScissorsStrength);
-		}
-		else if (selection == EXIT) 
-		{
-			return 0;
-		}
-	} 
-	while (true);
-	return 0;
+		return new Rock(customRockStrength);
+	}
+	else if (selection == PAPER) 
+	{
+		return new Paper(customPaperStrength);
+	}
+	else if (selection == SCISSORS) 
+	{
+		return new Scissors(customScissorsStrength);
+	}
+	else if (selection == EXIT) 
+	{
+		return 0;
+	}
+
 }
 
 /*********************************************************************
@@ -134,12 +134,14 @@ Tool* RPSGame::getComputer()
 *********************************************************************/
 void RPSGame::checkFight() 
 {
-	if (human->fight(computer)) 
+	int action = human->fight(computer);
+	cout << endl;
+	if (action == WIN) 
 	{
 		cout << "Good job Human! You win!" << endl;
 		human_wins++;
 	}
-	else if (computer->fight(human)) 
+	else if (action == LOSE) 
 	{
 		cout << "Computer wins!" << endl;
 		computer_wins++;
@@ -150,10 +152,7 @@ void RPSGame::checkFight()
 		ties++;
 	}
 
-	//TODO DISPLAY STATS
-	cout << "Human wins: " << human_wins << endl;
-	cout << "Computer wins: " << computer_wins << endl;
-	cout << "Ties: " << ties << endl;
+	displayStats();
 }
 
 /*********************************************************************
@@ -165,14 +164,21 @@ void RPSGame::checkFight()
 *********************************************************************/
 int RPSGame::playRPS() 
 {
+	//Menu
 	menu.displayMenu();
+
+	//Set Initial Strength Values
 	int strengthSelection = HelperFunctions::getYesNo("Please enter(1) Yes OR(2) No");
+	if (strengthSelection == 1)
+	{
+		chooseStrength();
+	}
+	else {
+		strengthRandomizer();
+	}
 	
+	//Game loop
 	do {
-		if (strengthSelection == 1) 
-		{
-			chooseStrength();
-		}
 		human = getTool();
 		if (human == NULL) 
 		{
@@ -186,6 +192,20 @@ int RPSGame::playRPS()
 	}
 
 	while (1);
+}
+
+void RPSGame::displayStats() {
+	cout << endl << "<<**CURRENT GAME**>>" << endl;
+	cout << "Human wins: " << human_wins << endl;
+	cout << "Computer wins: " << computer_wins << endl;
+	cout << "Ties: " << ties << endl << endl;
+}
+
+void RPSGame::strengthRandomizer()
+{
+	customRockStrength     = rand() % 10 + 1;
+	customPaperStrength    = rand() % 10 + 1;
+	customScissorsStrength = rand() % 10 + 1;
 }
 
 //Assignment Overload
