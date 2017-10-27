@@ -83,7 +83,7 @@ namespace HelperFunctions {
 				}
 				else
 				{
-					std::cout << "\Please input only alpha characters.\n\n";
+					std::cout << "Please input only alpha characters.\n\n";
 				}
 			}
 
