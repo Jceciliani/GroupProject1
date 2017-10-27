@@ -10,6 +10,9 @@ class Scissors : public Tool
 		//CONSTRUCTOR
 		Scissors();
 		Scissors(int);
+		
+		//Functions
+		int fight(Tool*);
 
 		//DESTRUCTOR
 		~Scissors();
